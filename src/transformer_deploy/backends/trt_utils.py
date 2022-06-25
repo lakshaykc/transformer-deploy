@@ -16,7 +16,8 @@
 All the tooling to ease TensorRT usage.
 """
 
-from typing import Callable, Dict, List, OrderedDict, Tuple
+# from typing import Callable, Dict, List, OrderedDict, Tuple
+from typing import Callable, Dict, List, Tuple
 
 import tensorrt as trt
 import torch
@@ -158,7 +159,8 @@ def get_output_tensors(
 
 def infer_tensorrt(
     context: IExecutionContext,
-    host_inputs: OrderedDict[str, torch.Tensor],
+    # host_inputs: OrderedDict[str, torch.Tensor],
+    host_inputs: Dict[str, torch.Tensor],
     input_binding_idxs: List[int],
     output_binding_idxs: List[int],
 ) -> List[torch.Tensor]:

@@ -17,7 +17,8 @@ Utils related to Pytorch inference.
 """
 from collections import OrderedDict
 from typing import Callable, Dict
-from typing import OrderedDict as Od
+# from typing import OrderedDict as Od
+from typing import Dict as Od
 from typing import Tuple
 
 import onnx
