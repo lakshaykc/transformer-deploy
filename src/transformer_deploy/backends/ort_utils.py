@@ -165,7 +165,7 @@ def inference_onnx_binding(
     :param device_id: ID of the device where to run the inference, to be used when there are multiple GPUs, etc.
     :return: a dict {axis name: output tensor}
     """
-    assert device in ["cpu", "cuda"]
+    assert device in ["cpu", "cuda"] + [f"cuda:{i}" for i in range(4)]
     assert len(inputs) == len(model_onnx.get_inputs())
     binding: IOBinding = model_onnx.io_binding()
     for input_onnx in model_onnx.get_inputs():
