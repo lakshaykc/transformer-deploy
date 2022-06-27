@@ -81,7 +81,7 @@ def generate_input(
     :param device: where to store tensors (Pytorch only). One of [cpu, cuda]
     :return: a tuple of tensors, Pytorch and numpy
     """
-    assert device in ["cpu", "cuda"]
+    assert device in ["cpu", "cuda"] + [f"cuda:{i}" for i in range(4)]
     shape = (batch_size, seq_len)
     inputs_pytorch: OrderedDict[str, torch.Tensor] = OrderedDict()
     for name in input_names:
