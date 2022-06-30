@@ -166,6 +166,8 @@ def main(commands: argparse.Namespace):
         model_pytorch.cuda()
 
     tensor_shapes = list(zip(commands.batch_size, commands.seq_len))
+    print('--'*30)
+    print('tensor shapes', tensor_shapes)
     # take optimial size
     inputs_pytorch, inputs_onnx = generate_multiple_inputs(
         batch_size=tensor_shapes[1][0],
@@ -259,6 +261,8 @@ def main(commands: argparse.Namespace):
 
         trt_logger: Logger = trt.Logger(trt.Logger.INFO if commands.verbose else trt.Logger.WARNING)
         runtime: Runtime = trt.Runtime(trt_logger)
+        print('building TRT')
+        print('tensor shapes ', tensor_shapes)
         engine: ICudaEngine = build_engine(
             runtime=runtime,
             onnx_file_path=onnx_model_path,
